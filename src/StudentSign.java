@@ -220,7 +220,7 @@ public class StudentSign {
 		if (x == -1)
 			return "No instrument is currently signed out with that ID";
 		else
-			return (instruments.get(x).getSerial() + " signed out at " + timeOutput() + " on " + dateOutput() + " by " + getName(instruments.get(x)))
+			return (instruments.get(x).getSerial() + " signed out at " + timeOutput() + " on " + dateOutput() + " by " + getName(instruments.get(x)));
 
 	} //end signOut
 
@@ -262,16 +262,18 @@ public class StudentSign {
 		if (exists==true){ //in the case that the instrument was signed out
 			BufferedWriter updateFile = new BufferedWriter(new FileWriter(update, false));
 			for (int i=0; i < currentlyOut.size(); i++){ //update the file (currentlyOut.txt) with the information that the instrument has been removed
-				updateFile.write((String)currentlyOut.get(i).getSerial() + "," + (String)currentlyOut.get(i).get(1) + "," + (String)currentlyOut.get(i).get(2) + "," + (String)currentlyOut.get(i).get(3));
+				updateFile.write((String)currentlyOut.get(i).getSerial() + "," +
+						(String)currentlyOut.get(i).getSerial() + "," + (String)currentlyOut.get(i).getDateOut() + "," +
+						(String)currentlyOut.get(i).getTimeOut());
 				updateFile.newLine();
 			}
 			updateFile.newLine();
 			updateFile.close();
 
-			String studentID = getName("null", instrumentID, true); //append to the sign-in data
+			/*String studentID = getName("null", instrumentID, true); //append to the sign-in data
 			writer.write(studentID + "," + instrumentID + "," + date + "," + time); //print out data
 			writer.newLine(); //create new line to separate the next entry
-			writer.close(); //close FileWrite
+			writer.close(); //close FileWrite*/
 		} else {
 			System.out.println("Error! This instrument was not signed out.");
 		}

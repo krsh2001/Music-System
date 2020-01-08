@@ -32,7 +32,7 @@ public class Instrument {
         return instrumentType;
     }
 
-    public String getInstrumentNum(){
+    public String dgetInstrumentNum(){
         return instrumentNum;
     }
 
